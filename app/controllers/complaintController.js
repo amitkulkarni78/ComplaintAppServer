@@ -46,24 +46,7 @@ module.exports = {
             });
         })
     },
-    loginUser : (req,res,next)=>{
-        // login the user
-        services.userService.findUserByEmailAndPassword(req.body.email,req.body.password).then((result)=>{
-            res.send({
-                status: true,
-                data : result,
-                message : 'user exists'
-            });
-        }).catch((err)=>{
-            console.log(err);
-            res.send({
-                status: false,
-                error : err,
-                message : 'user dose not exists'
-            });
-        })
-        
-    },
+    
     updateComplaint : (req,res,next)=>{
 
         var complaint = {};
