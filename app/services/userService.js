@@ -48,5 +48,22 @@ module.exports = {
                 }
             })
         })
+    },
+    findUserById : (id)=>{
+        return new Promise((resolve,reject)=>{
+            User.findById(id, (err,result)=>{
+                if(!err){
+                    if(result != null){
+                        resolve(result);
+                    }else{
+                        reject(result);
+                    }
+                    
+                }else{
+                    reject(err);
+                }
+            })
+        })
     }
+
 }

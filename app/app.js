@@ -6,8 +6,11 @@ const bodyParser = require('body-parser');
 
 var routes = require('./routes/routes');
 
+var cors = require('cors');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(cors());
 
 app.get('/', (req, res , next) => {
     res.send("Welcome to the APP Server");

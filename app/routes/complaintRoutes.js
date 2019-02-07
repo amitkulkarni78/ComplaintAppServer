@@ -12,4 +12,7 @@ Router.route('/complaint/update/:id')
 Router.route('/complaints')
 .get(controllers.complaintController.getAllComplaints);
 
+Router.route('/complaint/delete/:id')
+.post(controllers.complaintController.deleteComplaint);
+
 module.exports = Router

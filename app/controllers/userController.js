@@ -46,6 +46,24 @@ module.exports = {
             });
         })
         
+    },
+    getUserById : (req,res,next)=>{
+        // login the user
+        services.userService.findUserById(req.body.id).then((result)=>{
+            res.send({
+                status: true,
+                data : result,
+                message : 'user exists'
+            });
+        }).catch((err)=>{
+            console.log(err);
+            res.send({
+                status: false,
+                error : err,
+                message : 'user dose not exists'
+            });
+        })
+        
     }
 }
 

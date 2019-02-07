@@ -79,5 +79,18 @@ module.exports = {
                 }
             })
         })
+    },
+    deleteComplaint : (id) =>{
+        console.log(id);
+        return new Promise((resolve,reject)=>{
+            Complaint.findByIdAndDelete(id,(err,result)=>{
+                if(!err){
+                    resolve(result);
+                }else{
+                    reject(err);
+                }
+            })
+        })
     }
+
 }

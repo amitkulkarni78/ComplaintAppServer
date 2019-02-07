@@ -46,6 +46,21 @@ module.exports = {
             });
         })
     },
+     deleteComplaint : (req,res,next)=>{
+        services.complaintService.deleteComplaint(req.params['id']).then((result)=>{
+            res.send({
+                status: true,
+                data : result,
+                message : 'complaint was deleted'
+            });
+        }).catch((err)=>{
+            res.send({
+                status: false,
+                error : err,
+                message : 'error fetching the database'
+            });
+        })
+    },
     
     updateComplaint : (req,res,next)=>{
 
@@ -60,9 +75,11 @@ module.exports = {
         }if(req.body.email){
             complaint.email = req.body.email;
         }if(req.body.actionLog){
-            
+            complaint.actionLog = req.body.actionLog;
+        }else{
+
         } 
-        complaint.actionLog = "complaint was updated by "+req.body.email;
+        
         
 
         
