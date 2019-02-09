@@ -2,7 +2,7 @@
 const services = require('../services/services');
 
 module.exports = {
-    registerUser : (req,res,next)=>{
+    registerUser : async (req,res,next)=>{
         // check user exists
         // if !user create 
         // else return 
@@ -12,7 +12,7 @@ module.exports = {
         };
         console.log(user);
 
-        services.userService.createUser(user).then((result)=>{
+        await services.userService.createUser(user).then((result)=>{
             console.log(result);
             res.send({
                 status: true,
@@ -29,9 +29,9 @@ module.exports = {
         })
     },
 
-    loginUser : (req,res,next)=>{
+    loginUser : async (req,res,next)=>{
         // login the user
-        services.userService.findUserByEmailAndPassword(req.body.email,req.body.password).then((result)=>{
+        await services.userService.findUserByEmailAndPassword(req.body.email,req.body.password).then((result)=>{
             res.send({
                 status: true,
                 data : result,
@@ -47,9 +47,9 @@ module.exports = {
         })
         
     },
-    getUserById : (req,res,next)=>{
+    getUserById : async (req,res,next)=>{
         // login the user
-        services.userService.findUserById(req.body.id).then((result)=>{
+        await services.userService.findUserById(req.body.id).then((result)=>{
             res.send({
                 status: true,
                 data : result,

@@ -2,7 +2,7 @@
 const services = require('../services/services');
 
 module.exports = {
-    registerComplaint : (req,res,next)=>{
+    registerComplaint : async (req,res,next)=>{
         // check user exists
         // if !user create 
         // else return 
@@ -15,7 +15,7 @@ module.exports = {
         };
         console.log(complaint);
 
-        services.complaintService.createComplaint(complaint).then((result)=>{
+        await services.complaintService.createComplaint(complaint).then((result)=>{
             console.log(result);
             res.send({
                 status: true,
@@ -31,8 +31,8 @@ module.exports = {
             });
         })
     },
-    getAllComplaints : (req,res,next)=>{
-        services.complaintService.getAllComplaints().then((result)=>{
+    getAllComplaints : async (req,res,next)=>{
+        await services.complaintService.getAllComplaints().then((result)=>{
             res.send({
                 status: true,
                 data : result,
@@ -46,8 +46,8 @@ module.exports = {
             });
         })
     },
-     deleteComplaint : (req,res,next)=>{
-        services.complaintService.deleteComplaint(req.params['id']).then((result)=>{
+     deleteComplaint : async (req,res,next)=>{
+        await services.complaintService.deleteComplaint(req.params['id']).then((result)=>{
             res.send({
                 status: true,
                 data : result,
@@ -62,7 +62,7 @@ module.exports = {
         })
     },
     
-    updateComplaint : (req,res,next)=>{
+    updateComplaint : async (req,res,next)=>{
 
         var complaint = {};
 
@@ -84,7 +84,7 @@ module.exports = {
 
         
 
-        services.complaintService.updateComplaintById(req.params['id'],complaint).then((result)=>{
+        await services.complaintService.updateComplaintById(req.params['id'],complaint).then((result)=>{
             res.send({
                 status : true,
                 data: result,

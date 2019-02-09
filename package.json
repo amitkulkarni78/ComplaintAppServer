@@ -19,6 +19,7 @@
     "mongoose": "^5.4.10"
   },
   "devDependencies": {
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0"
   }
 }
